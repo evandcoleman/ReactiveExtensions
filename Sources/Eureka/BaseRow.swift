@@ -28,6 +28,13 @@ extension Reactive where Base: BaseRow, Base: RowType {
             base?.updateCell()
         }
     }
+    
+    public var title: BindingTarget<String?> {
+        return BindingTarget(on: UIScheduler(), lifetime: lifetime) { [weak base = self.base] value in
+            base?.title = value
+            base?.updateCell()
+        }
+    }
 }
 
 extension Reactive where Base: BaseRow, Base: FieldRowConformance {
