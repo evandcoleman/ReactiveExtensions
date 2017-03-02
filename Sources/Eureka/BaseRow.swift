@@ -19,6 +19,13 @@ extension Reactive where Base: BaseRow {
             base?.evaluateDisabled()
         }
     }
+    
+    public var hidden: BindingTarget<Condition> {
+        return BindingTarget(on: UIScheduler(), lifetime: lifetime) { [weak base = self.base] value in
+            base?.hidden = value
+            base?.evaluateHidden()
+        }
+    }
 }
 
 extension Reactive where Base: BaseRow, Base: RowType {
