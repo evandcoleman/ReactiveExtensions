@@ -18,8 +18,8 @@ extension Reactive where Base: FBSDKLoginManager {
     public func logIn(withReadPermissions permissions: [String], from fromViewController: UIViewController) -> SignalProducer<FBSDKLoginManagerLoginResult?, NSError> {
         return SignalProducer { observer, disposable in
             self.base.logIn(withReadPermissions: permissions, from: fromViewController) { result, error in
-                if let error = error as? NSError {
-                    observer.send(error: error)
+                if let error = error {
+                    observer.send(error: error as NSError)
                 } else {
                     observer.send(value: result)
                     observer.sendCompleted()
@@ -39,8 +39,8 @@ extension Reactive where Base: FBSDKLoginManager {
     public func logIn(withPublishPermissions permissions: [String], from fromViewController: UIViewController) -> SignalProducer<FBSDKLoginManagerLoginResult?, NSError> {
         return SignalProducer { observer, disposable in
             self.base.logIn(withPublishPermissions: permissions, from: fromViewController) { result, error in
-                if let error = error as? NSError {
-                    observer.send(error: error)
+                if let error = error {
+                    observer.send(error: error as NSError)
                 } else {
                     observer.send(value: result)
                     observer.sendCompleted()

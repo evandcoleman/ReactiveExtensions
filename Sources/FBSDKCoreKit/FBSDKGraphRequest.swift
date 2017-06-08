@@ -11,8 +11,8 @@ extension Reactive where Base: FBSDKGraphRequest {
     public func start() -> SignalProducer<Any?, NSError> {
         return SignalProducer { observer, disposable in
             let connection = self.base.start { connection, result, error in
-                if let error = error as? NSError {
-                    observer.send(error: error)
+                if let error = error {
+                    observer.send(error: error as NSError)
                 } else {
                     observer.send(value: result)
                     observer.sendCompleted()

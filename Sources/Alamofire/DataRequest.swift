@@ -13,8 +13,8 @@ extension Reactive where Base: DataRequest {
     public func responseString() -> SignalProducer<DataResponse<String>, NSError> {
         return SignalProducer { observer, disposable in
             let request = self.base.responseString { response in
-                if let error = response.result.error as? NSError {
-                    observer.send(error: error)
+                if let error = response.result.error {
+                    observer.send(error: error as NSError)
                 } else {
                     observer.send(value: response)
                     observer.sendCompleted()
@@ -31,8 +31,8 @@ extension Reactive where Base: DataRequest {
     public func responseJSON() -> SignalProducer<DataResponse<Any>, NSError> {
         return SignalProducer { observer, disposable in
             let request = self.base.responseJSON { response in
-                if let error = response.result.error as? NSError {
-                    observer.send(error: error)
+                if let error = response.result.error {
+                    observer.send(error: error as NSError)
                 } else {
                     observer.send(value: response)
                     observer.sendCompleted()
@@ -49,8 +49,8 @@ extension Reactive where Base: DataRequest {
     public func responseData() -> SignalProducer<DataResponse<Data>, NSError> {
         return SignalProducer { observer, disposable in
             let request = self.base.responseData { response in
-                if let error = response.result.error as? NSError {
-                    observer.send(error: error)
+                if let error = response.result.error {
+                    observer.send(error: error as NSError)
                 } else {
                     observer.send(value: response)
                     observer.sendCompleted()
@@ -67,8 +67,8 @@ extension Reactive where Base: DataRequest {
     public func responsePropertyList() -> SignalProducer<DataResponse<Any>, NSError> {
         return SignalProducer { observer, disposable in
             let request = self.base.responsePropertyList { response in
-                if let error = response.result.error as? NSError {
-                    observer.send(error: error)
+                if let error = response.result.error {
+                    observer.send(error: error as NSError)
                 } else {
                     observer.send(value: response)
                     observer.sendCompleted()
@@ -85,8 +85,8 @@ extension Reactive where Base: DataRequest {
     public func response() -> SignalProducer<DefaultDataResponse, NSError> {
         return SignalProducer { observer, disposable in
             let request = self.base.response { response in
-                if let error = response.error as? NSError {
-                    observer.send(error: error)
+                if let error = response.error {
+                    observer.send(error: error as NSError)
                 } else {
                     observer.send(value: response)
                     observer.sendCompleted()
