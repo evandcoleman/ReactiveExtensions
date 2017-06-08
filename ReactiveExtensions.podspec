@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'ReactiveExtensions'
-  s.version          = '0.1.1'
+  s.version          = '0.1.2'
   s.summary          = 'ReactiveSwift extensions for a variety of third-party frameworks.'
   s.homepage         = 'https://github.com/edc1591/ReactiveExtensions'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
@@ -27,7 +27,7 @@ Pod::Spec.new do |s|
 
   s.subspec 'Eureka' do |sp|
     sp.source_files = 'Sources/Eureka/*'
-    sp.dependency 'Eureka', '~> 2.0.1'
+    sp.dependency 'Eureka', '~> 3.0'
   end
 
   s.subspec 'FBSDKCoreKit' do |sp|
